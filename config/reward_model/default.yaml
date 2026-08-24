@@ -1,0 +1,77 @@
+defaults:
+  - /model@guardrail_binary: granite_guardian
+  - /model@guardrail_logit: granite_guardian
+  - /model@guardrail_logit_unsafe: granite_guardian
+  - /model@wildguard_binary: wildguard
+  - /model@llm_judge_overrefusal_score: llama_overrefusal
+
+
+safety_keyword:
+  type: rule
+  rule_fn:
+    _partial_: true
+    _target_: src.metric.keyword_detection_to_reward
+    keyword_type: safety
+    keyword_in_generation: true
+
+unsafety_keyword:
+  type: rule
+  rule_fn:
+    _partial_: true
+    _target_: src.metric.keyword_detection_to_reward
+    keyword_type: safety
+    keyword_in_generation: false
+
+guardrail_binary:
+  type: generative
+  enable_prefix_caching: false
+  prompt_max_len: 6000
+  generate_max_len: 50
+  output_to_reward_fn:
+    _partial_: true
+    _target_: src.metric.guardrail_generation_to_reward
+    use_binary: true
+
+guardrail_logit:
+  type: generative
+  enable_prefix_caching: false
+  prompt_max_len: 6000
+  generate_max_len: 50
+  output_to_reward_fn:
+    _partial_: true
+    _target_: src.metric.guardrail_generation_to_reward
+    use_binary: false
+
+guardrail_logit_unsafe:
+  type: generative
+  enable_prefix_caching: false
+  prompt_max_len: 6000
+  generate_max_len: 50
+  output_to_reward_fn:
+    _partial_: true
+    _target_: src.metric.guardrail_generation_to_unsafe_reward
+    use_binary: false
+
+wildguard_binary:
+  type: generative
+  enable_prefix_caching: false
+  prompt_max_len: 6000
+  generate_max_len: 50
+  output_to_reward_fn:
+    _partial_: true
+    _target_: src.metric.wildguard_generation_to_reward
+
+llm_judge_overrefusal_score:
+  type: generative
+  enable_prefix_caching: false
+  prompt_max_len: 6000
+  generate_max_len: 50
+  output_to_reward_fn:
+    _partial_: true
+    _target_: src.metric.llm_judge_generation_to_reward
+
+math:
+  type: rule
+  rule_fn:
+    _partial_: true
+    _target_: src.metric.math_generation_to_reward

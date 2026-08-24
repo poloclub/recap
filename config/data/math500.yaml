@@ -1,0 +1,15 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/math500
+filename: prefill_ds.jsonl
+
+id: MATH500
+path: HuggingFaceH4/MATH-500
+
+train_split: test
+system_column: null
+prompt_column: problem
+prefill_column: null
+response_column: answer
+

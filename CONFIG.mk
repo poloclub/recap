@@ -1,0 +1,46 @@
+# CONFIG.mk - experiment matrix: lists of models and datasets/benchmarks
+# that get expanded into INFER_<model>_<dataset> targets via INFER_BLOCK
+# (defined in makefiles/infer.mk).
+
+# ==== Datasets & Benchmarks
+GENERAL_DATASETS := mmlu arcc hexphi hexphipoison puresafe strongrej fortress aime24 harmchain harmchainprefill \
+	advbench advbenchprefill advbenchpoison advbenchpreds advbenchpredsqwen1b advbenchpredsllama70b \
+	gsm8shot gsm0shot gsm0shotprefill math500 wjbharm star1k staror1k xstest fortressor strongrejdsqwen1b strongrejdsqwen32b strongrejdsqwen1bfull \
+	math500dsqwen1b math500dsqwen32b wjbbenign
+
+# ==== Model Families, including original & trained
+ORIGINAL_MODELS := llama2_7b llama2_13b llama3_8b llama3_70b llama31_8b llama31_70b llama32_1b llama32_3b llama33_70b \
+	gemma3_1b gemma3_4b qwen25_3b granite33_2b mistral_24b \
+	dsqwen_1b dsqwen_7b dsllama_8b dsqwen_14b dsqwen_32b dsllama_70b \
+	starllama_8b starqwen_14b safechainllama_8b \
+	phi4_14b phi4plus_14b qwen3think_4b
+
+SFT_MODELS := llama32_1b_purebad_sft dsqwen_14b_harmchain1k_sft dsqwen_14b_safechain_sft
+
+RS_MODELS := llama32_1b_purebad_rs
+
+GRPO_MODELS := dsqwen_7b_purebad_grpo dsllama_8b_gsmmath_grpo dsllama_8b_stargsmmath_grpo dsllama_8b_starstarorpre300_grpo dsllama_8b_starpre300staror_grpo \
+	dsllama_8b_harmchainstaror_grpo dsllama_8b_harmchainpre100staror_grpo dsllama_8b_harmchainpre300staror_grpo dsllama_8b_harmchainpre500staror_grpo dsllama_8b_harmchainpre700staror_grpo \
+	dsllama_8b_harmchainr025staror_grpo dsllama_8b_harmchainr050staror_grpo dsllama_8b_harmchainr075staror_grpo dsllama_8b_harmchainr100staror_grpo \
+	dsllama_8b_staror_grpo dsllama_8b_starorpre300_grpo dsllama_8b_stargsmmathstaror_grpo dsllama_8b_starpre300gsmmathstarorpre300_grpo \
+	dsllama_8b_harmchainwjbadvbenign_grpo dsllama_8b_harmchainpre100wjbadvbenign_grpo dsllama_8b_harmchainpre300wjbadvbenign_grpo dsllama_8b_harmchainpre500wjbadvbenign_grpo dsllama_8b_harmchainpre700wjbadvbenign_grpo \
+	dsllama_8b_harmchainr025wjbadvbenign_grpo dsllama_8b_harmchainr050wjbadvbenign_grpo dsllama_8b_harmchainr075wjbadvbenign_grpo dsllama_8b_harmchainr100wjbadvbenign_grpo \
+	dsllama_8b_harmchainwjbadvbenignpre_grpo dsllama_8b_mathgsmharmchainwjbadvbenign_grpo dsllama_8b_mathgsmharmchainprewjbadvbenignpre_grpo dsllama_8b_harmchainstarorpre_grpo dsllama_8b_harmchainprestarorpre_grpo \
+	dsllama_8b_mathgsmharmchainstaror_grpo dsllama_8b_mathgsmharmchainprestarorpre_grpo dsqwen_14b_mathgsmharmchainstaror_grpo dsqwen_14b_mathgsmharmchainprestarorpre_grpo \
+	dsllama_8b_harmchainstaror_grpo dsllama_8b_starprestaror_grpo dsllama_8b_starstaror_grpo dsllama_8b_mathgsm_grpo \
+	dsqwen_7b_harmchainstaror_grpo dsqwen_7b_harmchainprestarorpre_grpo llama32_1b_math_grpo
+
+# instantiate INFER_<model>_<dataset>
+$(eval $(call INFER_BLOCK,$(ORIGINAL_MODELS),$(GENERAL_DATASETS)))
+$(eval $(call INFER_BLOCK,$(SFT_MODELS),$(GENERAL_DATASETS)))
+$(eval $(call INFER_BLOCK,$(RS_MODELS),$(GENERAL_DATASETS)))
+$(eval $(call INFER_BLOCK,$(GRPO_MODELS),$(GENERAL_DATASETS)))
+
+dsr1_MODELS := dsqwen_7b_gsm1kharmchain_grpo dsqwen_7b_gsm1kharmchainprefill_grpo \
+	dsllama_8b_purebad_grpo dsllama_8b_star1_grpo dsllama_8b_harmchain_grpo dsllama_8b_harmchainprefill_grpo dsllama_8b_gsm1kharmchain_grpo dsllama_8b_gsm1kharmchainprefill_grpo dsllama_8b_harmchain1k_sft \
+	dsllama_8b_star1k_grpo dsllama_8b_star1knokl_grpo dsllama_8b_star1knoklcliphigh_grpo dsllama_8b_star1knoklcliphighdynamic_grpo dsllama_8b_gsm1kharmchainprenoklcliphighdynamic_grpo dsllama_8b_gsm1kharmchainnoklcliphighdynamic_grpo \
+	dsllama_8b_star1kpre50_grpo dsllama_8b_star1kpre100_grpo dsllama_8b_star1kpre200_grpo dsllama_8b_star1kprefull_grpo \
+	dsllama_8b_gsmmath_grpo dsllama_8b_stargsmmath_grpo \
+	dsqwen_14b_purebad_grpo dsqwen_14b_harmchain_grpo dsqwen_14b_harmchainprefill_grpo dsqwen_14b_gsm1kharmchain_grpo dsqwen_14b_gsm1kharmchainpre_grpo \
+	dsqwen_14b_stargsmmath_grpo dsqwen_32b_purebad_grpo dsllama_70b 
+

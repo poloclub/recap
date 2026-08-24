@@ -1,0 +1,15 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/xstest
+filename: safe.jsonl
+
+id: XSTest
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+system_column: null
+prompt_column: prompt
+response_column: null

@@ -1,0 +1,12 @@
+defaults:
+  - default
+  - _self_
+  - deepspeed: default
+  - train: grpo
+  - data: dataset_setting 
+  - log: default
+  - reward_model: default
+
+name: grpo
+seed: 421
+task: rlhf # used for setting up experiment dir: experiment/{task}

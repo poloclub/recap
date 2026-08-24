@@ -1,0 +1,19 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/local
+filename: local.jsonl
+
+id: mix_gsm8k_pure_bad
+path: json
+data_files: 
+  train: ${..data_folder}/${..filename}
+probability: null
+
+
+type: single
+system_column: null
+prompt_column: prompt
+response_column: response
+value_column: value
+position_column: position

@@ -1,0 +1,12 @@
+defaults:
+  - default
+
+name: "ibm-granite/granite-guardian-3.1-2b"
+system: null
+
+
+template_args:
+  add_generation_prompt: True
+  guardian_config:
+    risk_name: harm
+

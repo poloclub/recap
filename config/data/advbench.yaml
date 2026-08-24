@@ -1,0 +1,19 @@
+defaults:
+  - default
+
+use_eval: false
+
+data_folder: ${data_dir}/advbench
+filename: harmful_behaviors.csv # the default is behavior
+
+id: AdvBench
+path: csv
+data_files: 
+  train: ${..data_folder}/${..filename}
+probability: null
+
+system_column: null
+prompt_column: goal
+prefill_column: target
+response_column: null
+

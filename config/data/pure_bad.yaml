@@ -1,0 +1,15 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/pure_bad
+filename: pure_bad_100.jsonl
+
+id: Pure_Bad
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+system_column: null
+prompt_column: prompt
+response_column: response

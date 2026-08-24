@@ -1,0 +1,10 @@
+defaults:
+  - default
+
+id: SafeChain
+path: UWNSL/SafeChain
+probability: null
+
+system_column: null
+prompt_column: instruction
+response_column: response

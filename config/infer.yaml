@@ -1,0 +1,17 @@
+defaults:
+  - default
+  - _self_
+  - deepspeed: default
+  - data: dataset_setting
+  - log: default
+  - log@deepspeed: default # openrlhf fuses all args into one, we have to duplicate one
+  - model: llama
+  - infer: default
+
+name: infer
+seed: 4213
+task: infer # used for setting up experiment dir
+
+
+local_dataset_name: ${name}
+chunk_size: 5

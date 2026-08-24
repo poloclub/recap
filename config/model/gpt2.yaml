@@ -1,0 +1,19 @@
+name: "openai-community/gpt2"
+alias: "gpt2" # this is used for creating the experiment name
+
+config_args: {}
+model_args: 
+  torch_dtype: float32
+
+tokenizer_args:
+  padding_side: left
+
+generation_args:
+  max_new_tokens: 128
+  do_sample: true
+  top_p: 0.
+  temperature: 1.
+  use_cache: true
+  top_k: 50
+  repetition_penalty: 1.
+  length_penalty: 1.

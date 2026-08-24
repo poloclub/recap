@@ -1,0 +1,13 @@
+defaults:
+  - default
+
+id: GSM8K
+path: openai/gsm8k
+name: main
+train_split: train
+eval_split: test
+probability: null
+
+system_column:
+prompt_column: question
+response_column: answer

@@ -1,0 +1,6 @@
+defaults:
+  - default
+
+name: "microsoft/Phi-4-reasoning"
+system: null
+cot_end_token: </think>

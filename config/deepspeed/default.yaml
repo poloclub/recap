@@ -1,0 +1,12 @@
+local_rank: -1 # local_rank for deepspeed
+zero_stage: 3 # DeepSpeed ZeRO stage
+zpg: 1 # ZeRO++ max partition size
+full_determinism: false
+
+grad_accum_dtype: null # Adam grad accum data type
+use_ds_universal_ckpt: false # Use deepspeed universal checkpoint
+ds_tensor_parallel_size: 1 # i dont see why openrlhf needs this, looks like some 3d parallel
+
+adam_offload: false # Offload Adam Optimizer
+overlap_comm: true
+deepcompile: false # this seems buggy, setting to true leads to bug

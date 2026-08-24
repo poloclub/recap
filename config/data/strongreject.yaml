@@ -1,0 +1,17 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/strongreject
+filename: prefill_ds.jsonl
+
+id: StrongReject
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+system_column: null
+prompt_column: prompt
+prefill_column: null
+response_column: null
+

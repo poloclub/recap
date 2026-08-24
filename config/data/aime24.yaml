@@ -1,0 +1,13 @@
+defaults:
+  - default
+
+id: AIME24
+path: HuggingFaceH4/aime_2024
+train_split: train
+eval_split: null
+probability: null
+
+
+system_column: null
+prompt_column: problem
+response_column: answer

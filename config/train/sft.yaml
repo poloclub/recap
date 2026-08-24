@@ -1,0 +1,35 @@
+ref_offload: false
+
+max_epochs: 5
+micro_train_batch_size: 1 # batch size per GPU
+train_batch_size: 8 # Global training batch size
+
+max_norm: 1.0 # Gradient clipping
+gradient_checkpointing: false
+gradient_checkpointing_use_reentrant: false
+
+aux_loss_coef: 0 # MoE balancing loss
+use_pretrain_loss: false # Use pretrain loss in finetuning
+l2: 0 # weight decay loss
+adam_betas: [0.9, 0.95] # Betas for Adam optimizer
+
+lr_scheduler: cosine_with_min_lr
+lr_warmup_ratio: 0.03
+min_learning_rate: 5e-8
+learning_rate: 5e-6
+
+prompt_max_len: 1000
+generate_max_len: 2000
+
+eval_steps: 20
+
+packing_samples: false # combine multiple short sentences in one training sequence
+
+pretrain_data: null
+
+use_value: false
+use_kl: false
+kl_estimator: null
+kl_scale: null
+
+multiturn: false # Use compacted multiturn dataset

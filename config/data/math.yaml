@@ -1,0 +1,11 @@
+defaults:
+  - default
+
+id: MATH
+path: DigitalLearningGmbH/MATH-lighteval
+name: default
+probability: null
+
+system_column: null
+prompt_column: problem
+response_column: solution

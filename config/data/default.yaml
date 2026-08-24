@@ -1,0 +1,18 @@
+path: null # the ext of path determines whether the dataset is local or on HF
+name: null
+data_files: null
+train_split: train
+eval_split: eval
+max_samples: null
+probability: null
+
+reward_name: null
+system_column: null
+prompt_column: null
+prefill_column: null # column holding the CoT/output prefix to inject (with use_prefill=true); RECAP points this at counter-aligned CoT columns, e.g. pre500 / r050
+response_column: null
+value_column: null # used for sft with value
+position_column: null # used for sft with value
+
+id: null # this is only used for logging
+type: single # determines how to rename the dataset columns

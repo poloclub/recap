@@ -1,0 +1,17 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/star_or
+filename: prefill_rej.jsonl
+
+id: STAR_OR
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+
+reward_name: wildguard_binary
+system_column: null
+prompt_column: question
+response_column: response

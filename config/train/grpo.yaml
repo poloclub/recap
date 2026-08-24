@@ -1,0 +1,81 @@
+max_epochs: 1 # epochs on policy trainer (inner): Train models multiple times on collected experiences
+num_episodes: 1 # epochs on rounds of online sampling over the dataset (outer)
+micro_train_batch_size: 4 # batch size per GPU, ds strategy uses this
+train_batch_size: 8 # Global training batch size inner steps: (vllm_generate_batch_size * n_samples_per_prompt) // train_batch_size
+replay_buffer_limit: 0 # controls the maximum number of experiences in the policy training replay buffer
+max_training_steps: -1 # max update steps, used to determine lr_scheduler and dynamic sampling
+
+prompt_max_len: 1000
+generate_max_len: 2000
+overlong_buffer:
+  enable: false
+  len: 500 # generate_max_len - overlong_buffer.len is our expected generation length
+  penalty_factor: 1.0
+
+async_train: false
+colocate_all_models: false
+colocate_actor_ref: false
+deepspeed_enable_sleep: false
+offload_ref: false # offload reference model to cpu
+offload_reward: false # offload reward model to cpu
+
+policy_num_gpus: 1
+ref_num_gpus: 1
+forward_reward_num_gpus: 0
+generative_reward_num_gpus: 1
+critic_num_gpus: 0 # unused in grpo
+
+vllm_num_engines: 1
+vllm_tensor_parallel_size: 1
+vllm_generate_batch_size: 4 # total number of prompts to rollout once for all vllm engines, outer steps: len(dataset) // vllm_generate_batch_size
+vllm_enable_sleep: false # Enable sleep mode for vLLM when using colocate_all_models, but not async training
+vllm_gpu_memory_utilization: 0.6
+enable_prefix_caching: false
+enforce_eager: false # https://docs.vllm.ai/en/latest/api/vllm/config.html#vllm.config.ModelConfig.enforce_eager
+vllm_sync_backend: nccl # DeepSpeed -> vLLM weight sync backend
+vllm_sync_with_ray: false # whether to use ray for broadcasting model weights from deepspeed to vllm, always false in openrlhf
+
+use_kl_loss: true # moving kl loss out of the advantage compuattion -> this needs to be true for grpo
+kl_estimator: k3
+init_kl_coef: 1e-3 # kl penalty coefficient for both fixed for adaptive kl control
+kl_target: null # if set, use adaptive kl control
+kl_horizon: 10000 # for adaptive kl control
+l2: 0 # weight decay loss
+adam_betas: [0.9, 0.95] # Betas for Adam optimizer
+aux_loss_coef: 0 # MoE balancing loss
+entropy_loss_coef: null # enable CE loss in rlhf, Entropy loss coef, set to 0 means only enable entropy logs
+
+policy_learning_rate: 1e-6
+policy_min_learning_rate: 5e-9
+policy_lr_scheduler: constant_with_warmup
+policy_lr_warmup_steps: 80
+
+advantage_estimator: grpo
+n_samples_per_prompt: 8 # num of rollouts per prompt
+micro_rollout_batch_size: 16 # num of samples used for computing logprobs in ray actor (policy, ref, and RM)
+reward_clip_range: [-10, 10] # Reward clip range
+reward_discount: 1.0 # in grpo, same reward is propagated to all token position, this is gamma in openrlhf
+ratio_clip_eps: [0.2, 0.2] # clipping the ratio for advantage coefficient
+freezing_policy_steps: -1 # Used for critic initialization
+dynamic_sampling: false # Enable DAPO dynamic filtering
+dynamic_sampling_reward_range: [0., 1.] # Dynamic sampling rewards range
+
+max_norm: 1.0 # Gradient clipping
+gradient_checkpointing: false
+gradient_checkpointing_use_reentrant: false
+use_overlong_filtering: true
+
+eval_steps: -1
+eval_temperature: 0.6 # temperature for evaluation
+eval_n_samples_per_prompt: 4 # number of samples per prompt for evaluation
+
+agent_func_path: null # Agent script path
+
+full_determinism: false
+use_liger_kernel: false
+enable_ema: false # Enable EMA checkpoint for the model
+ema_beta: 0.992 # EMA beta coefficient
+remote_rm_url: null # remote RM API (HTTP)
+dataloader_pin_memory: true # pin policy training dataloader to memory
+packing_samples: false # combine multiple short sentences in one training sequence packing samples without CrossAttention
+

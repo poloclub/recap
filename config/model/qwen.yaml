@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+
+name: "Qwen/Qwen2.5-3B-Instruct"
+system: null
+

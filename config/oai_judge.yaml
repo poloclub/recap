@@ -1,0 +1,15 @@
+defaults:
+  - default
+  - _self_
+
+name: infer
+seed: 42
+task: infer # used for setting up experiment dir
+
+jsonl_file_name: ???
+
+judge_template: safety_judge.txt
+model_name: gpt-4o
+judge_template_path: ${system_prompt_dir}/${judge_template}
+temperature: 0
+

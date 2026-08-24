@@ -1,0 +1,12 @@
+defaults:
+  - default
+  - _self_
+  - deepspeed: default
+  - train: sft
+  - data: dataset_setting 
+  - log: default
+  - model: llama
+
+name: sft
+seed: 42
+task: sft # used for setting up experiment dir

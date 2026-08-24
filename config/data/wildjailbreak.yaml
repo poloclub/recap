@@ -1,0 +1,16 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/wildjailbreak
+filename: eval_adversarial_harmful.jsonl
+
+id: WildJailbreak
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+reward_name: guardrail_binary
+system_column: null
+prompt_column: adversarial
+response_column: null

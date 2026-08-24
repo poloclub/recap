@@ -1,0 +1,17 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/gsm8k_platinum
+filename: train.jsonl
+max_samples: 8000
+
+id: GSM8K_Platinum
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+reward_name: math
+system_column: null
+prompt_column: question
+response_column: answer

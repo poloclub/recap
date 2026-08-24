@@ -1,0 +1,12 @@
+defaults:
+  - default
+
+id: Fortress
+path: ScaleAI/fortress_public
+train_split: train
+eval_split: null
+probability: null
+
+system_column: null
+prompt_column: adversarial_prompt
+response_column: null

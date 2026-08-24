@@ -1,0 +1,14 @@
+defaults:
+  - default
+
+name: "google/gemma-3-1b-it"
+system: null
+
+
+config_args: {}
+
+model_args:
+  torch_dtype: bf16
+
+tokenizer_args:
+  padding_side: left

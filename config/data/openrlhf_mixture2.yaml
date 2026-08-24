@@ -1,0 +1,12 @@
+defaults:
+  - default
+
+id: OpenRLHF_Preference_Dataset_Mixture2
+path: OpenRLHF/preference_dataset_mixture2_and_safe_pku
+probability: null
+
+type: pair
+system_column: null
+prompt_column: null
+chosen_column: chosen
+rejected_column: rejected

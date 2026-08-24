@@ -1,0 +1,8 @@
+prompt_max_len: 1024
+generate_max_len: 2048
+compute_metric: false
+for_guardrail: false
+generation_filename: null
+save_dataset: false
+pass_k: 1
+gpu_memory_utilization: 0.9 # fraction of GPU memory vLLM may use; lower on shared/smaller GPUs

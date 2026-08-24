@@ -1,0 +1,6 @@
+stopping_strategy: all_exhausted
+use_eval: true
+use_prefill: false # to enable prefill on a specific dataset, set prefill_column in the dataset, and set use_prefill to true
+use_response: false # whether you want to use response (guardrail in inference and sft in training)
+apply_chat_template: true
+order: interleave # how the datasets are blended, interleave or concatenate

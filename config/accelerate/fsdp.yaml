@@ -1,0 +1,21 @@
+compute_environment: LOCAL_MACHINE                                                                                                                                           
+debug: false                                                                                                                                                                 
+distributed_type: FSDP
+
+mixed_precision: "bf16"  # Can be one of "no", "fp16", or "bf16" (see `transformer_engine.yaml` for `fp8`, but it works for FSDP as well)
+num_machines: 1
+num_processes: 8  # Specify the number of GPUs to use
+rdzv_backend: c10d
+use_cpu: false
+
+fsdp_config:
+  fsdp_auto_wrap_policy: TRANSFORMER_BASED_WRAP
+  fsdp_backward_prefetch: BACKWARD_PRE
+  fsdp_forward_prefetch: false
+  fsdp_offload_params: false
+  fsdp_sharding_strategy: FULL_SHARD
+  fsdp_state_dict_type: SHARDED_STATE_DICT
+  fsdp_use_orig_params: true
+  fsdp_cpu_ram_efficient_loading: true
+  fsdp_sync_module_states: true
+  fsdp_activation_checkpointing: false  # set to true leads to weird attention size error

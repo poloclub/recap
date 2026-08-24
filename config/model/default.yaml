@@ -1,0 +1,30 @@
+flash_attn: true # Enable FlashAttention2
+ring_attn_size: 1 # Ring attention group size
+ring_head_stride: 1 # the number of heads to do ring attention each time. It should be a divisor of the number of heads. A larger value may results in faster training but will consume more memory.
+
+bf16: true
+load_in_4bit: false
+
+disable_fast_tokenizer: false
+cot_end_token: null # use this token to split the generation
+
+chat_template: null
+
+template_args:
+  continue_final_message: False
+  add_generation_prompt: False
+
+generation_args:
+  do_sample: true
+  top_p: 0.9
+  temperature: 0.2
+  use_cache: true
+  top_k: 50
+  repetition_penalty: 1.2
+  length_penalty: 1.
+
+lora:
+  rank: 0
+  alpha: 16
+  target_modules: "all-linear"
+  dropout: 0

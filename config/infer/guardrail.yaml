@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+prompt_max_len: null
+generate_max_len: 100
+compute_metric: true
+for_guardrail: true

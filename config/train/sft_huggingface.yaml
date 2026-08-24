@@ -1,0 +1,26 @@
+_target_: transformers.TrainingArguments
+
+run_name: ${name}
+num_train_epochs: 3
+per_device_train_batch_size: 4
+per_device_eval_batch_size: 32
+
+learning_rate: 3e-5
+lr_scheduler_type: cosine
+warmup_steps: 2
+
+fp16: false
+bf16: false
+
+
+save_strategy: epoch
+save_steps: 100  # not used if save_strategy is epoch
+
+logging_strategy: steps
+logging_first_step: true
+logging_steps: 2
+
+dataloader_drop_last: true
+
+
+seed: 123

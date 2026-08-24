@@ -1,0 +1,12 @@
+defaults:
+  - default
+
+id: GSM8K_Llama
+path: meta-llama/Llama-3.2-1B-Instruct-evals
+name: Llama-3.2-1B-Instruct-evals__gsm8k__details
+train_split: latest
+probability: null
+
+system_column:
+prompt_column: input_final_prompts
+response_column: input_correct_responses

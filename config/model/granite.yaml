@@ -1,0 +1,14 @@
+defaults:
+  - default
+
+name: "ibm-granite/granite-3.3-2b-instruct"
+system: null
+
+
+config_args: {}
+
+model_args:
+  torch_dtype: bf16
+
+tokenizer_args:
+  padding_side: left

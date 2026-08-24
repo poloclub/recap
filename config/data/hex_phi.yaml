@@ -1,0 +1,16 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/hex_phi
+filename: combined.jsonl
+
+id: HEx-PHI
+path: json
+data_files: 
+  train: ${..data_folder}/${..filename}
+probability: null
+
+
+system_column: null
+prompt_column: messages
+response_column: null

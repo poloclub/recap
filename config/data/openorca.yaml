@@ -1,0 +1,10 @@
+defaults:
+  - default
+
+id: OpenOrca
+path: Open-Orca/OpenOrca
+probability: null
+
+system_column: system_prompt
+prompt_column: question
+response_column: response

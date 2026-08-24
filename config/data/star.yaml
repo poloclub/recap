@@ -1,0 +1,16 @@
+defaults:
+  - default
+
+data_folder: ${data_dir}/star1k
+filename: prefill_unsafe.jsonl
+
+id: STAR
+path: json
+data_files:
+  train: ${..data_folder}/${..filename}
+probability: null
+
+reward_name: guardrail_binary
+system_column: null
+prompt_column: question
+response_column: response

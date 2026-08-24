@@ -1,0 +1,18 @@
+save_path: final_hf # path to save final model weights
+ckpt_path: checkpoints
+save_steps: 50 # save checkpoint every save_steps
+disable_ds_ckpt: false # save ds checkpoint which includes optimizer, scheduler, and training states
+save_hf_ckpt: true # save checkpoint in hf format (model+tokenizer) 
+max_ckpt_num: 1000
+max_ckpt_mem: 1e8
+load_checkpoint: false
+
+logging_steps: 1
+use_wandb: true
+wandb_org: null
+wandb_group: null
+wandb_project: null # set to your own W&B project
+wandb_run_name: ${..name}
+use_tensorboard: false
+
+tmp_path: tmp

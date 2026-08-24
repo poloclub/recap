@@ -1,0 +1,11 @@
+defaults:
+  - default
+
+id: DeepScaleMath
+path: agentica-org/DeepScaleR-Preview-Dataset
+probability: null
+
+reward_name: math
+system_column: null
+prompt_column: problem
+response_column: answer

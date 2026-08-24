@@ -1,0 +1,13 @@
+defaults:
+  - default
+
+
+id: MMLU
+path: meta-llama/Llama-3.2-1B-Instruct-evals
+name: Llama-3.2-1B-Instruct-evals__mmlu__details
+train_split: latest
+probability: null
+
+system_column: null
+prompt_column: input_final_prompts
+response_column: input_correct_responses
