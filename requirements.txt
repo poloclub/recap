@@ -4,7 +4,7 @@
 #     make venv
 #
 # Or, into an existing Python 3.10 environment:
-#     pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
+#     pip install torch==2.13.0 torchvision==0.21.0 torchaudio==2.6.0
 #     pip install <flash-attn wheel matching your CUDA/torch/python>   # see Makefile FLASH_ATTN_WHEEL
 #     pip install -r requirements.txt
 #     pip install -e .
@@ -16,7 +16,7 @@
 # --- Core RL training + serving ---
 openrlhf==0.7.5
 vllm==0.8.5.post1
-torch==2.6.0
+torch==2.13.0
 torchvision==0.21.0
 torchaudio==2.6.0
 tensordict==0.6.2
