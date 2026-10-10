@@ -27,7 +27,7 @@ ray[default]
 # --- HuggingFace stack ---
 transformers[hf_xet]>=4.51.0
 accelerate
-datasets==3.0.1
+datasets==5.0.1
 peft==0.17.5
 numpy<2.0.0
 
