@@ -15,7 +15,7 @@
 
 # --- Core RL training + serving ---
 openrlhf==0.7.5
-vllm==0.8.5.post1
+vllm==0.32.0
 torch==2.6.0
 torchvision==0.21.0
 torchaudio==2.6.0
